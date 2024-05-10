@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key=os.urandom(24)
 
-API_KEY = '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'
+API_KEY = 'sk-proj-ObCXSsQk6oiBdPEyjuKFT3BlbkFJsN74caZoHBLCb6vsidR6'
 openai.api_key = API_KEY
 model_id = 'gpt-3.5-turbo'
 
