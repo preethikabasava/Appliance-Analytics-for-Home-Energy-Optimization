@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Advisor Chat</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f8; /* Light grey background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Add padding around the chat window */
+        }
+
+        #chat-container {
+            width: 80%; /* Adjust the width as needed */
+            max-width: 1000px; /* Maximum width */
+            height: 90%; /* Adjust the height as needed */
+            max-height: 750px; /* Maximum height */
+            border: 1px solid #ddd;
+            background-color: #fff; /* White background for chat container */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow for better focus */
+            overflow: hidden; /* Ensures no overflow outside the container */
+        }
+
+        #chat {
+            flex-grow: 1;
+            overflow: auto; /* Enable vertical scrolling */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        #chat p {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
+            display: flex;
+            align-items: center;
+        }
+
+        .system {
+            align-self: flex-start;
+            background-color: #e2e2e2; /* Light grey for system messages */
+            color: #333;
+        }
+
+        .user {
+            align-self: flex-end;
+            background-color: #2F4F4F; /* Bright blue for user messages */
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            padding: 10px;
+            background-color: #ddd; /* Light grey form background */
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2F4F4F; /* Dark blue button */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #778899; /* Darker blue on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h2 style="text-align: center; padding: 10px; background-color: #2F4F4F; color: white;">Energy Advisor Chat</h2>
+        <div id="chat">
+	<div style="overflow: auto;padding: 20px;display: flex;flex-direction: column">
+            {% for message in conversation %}
+            <p class="{{ 'user' if message.role == 'user' else 'system' }}">
+		{{ message.content }}
+	    </p>
+            {% endfor %}
+	</div>
+        </div>
+        <form action="/output" method="post">
+            <input type="text" name="message" placeholder="Type your message here..." autofocus>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>

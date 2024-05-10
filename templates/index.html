@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Energy Consumption Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-image: linear-gradient(to bottom, hsl(200, 100%, 90%), hsl(240, 100%, 90%));">
+    <header>
+        <div class="title">
+            <h1>Energy Consumption Analysis System</h1>
+        </div>
+        <div class="index-buttons">
+            <button><a href="{{ url_for('index') }}">Home</a></button>
+            <button><a href="{{ url_for('inspect') }}">Inspect</a></button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="description-container">
+            <h1 style="font-family: 'Sacramento', cursive;">Welcome to our project on analyzing energy consumption of energy-efficient appliances.</h1>
+            <p>Click <a href="{{ url_for('inspect') }}">here</a> to inspect and analyze the energy consumption.</p>
+        </div>
+    </div>
+</body>
+</html>
